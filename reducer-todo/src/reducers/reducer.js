@@ -23,7 +23,7 @@ export const initialState = [
 /* Write the case in your reducer for adding a todo (You can create a unique id with new Date()) 
 Write the `case` in your reducer for toggling the completed property
 Write the `case` in your reducer for filtering completed todos*/
-export function reducer(state, action) {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
       return [
@@ -39,14 +39,14 @@ export function reducer(state, action) {
         if (todo.id === action.payload) {
           return {
             ...todo,
-            complete: !todo.completed
+            completed: !todo.completed
           };
         };
 
         return todo;
       });
 
-    case "CLEAR_COMPLETE":
-      return state.filter(todo => !todo.complete);
+    case "CLEAR_COMPLETED":
+      return state.filter(todo => !todo.completed);
   };
 };
